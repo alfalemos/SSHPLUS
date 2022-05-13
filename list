@@ -1,167 +1,113 @@
 #!/bin/bash
-echo "$ipdovps" >/etc/IP
-rm -rf /etc/SSHPlus/bot /etc/SSHPlus/ShellBot.sh /etc/SSHPlus/cabecalho /etc/SSHPlus/proxy.py > /dev/null 2>&1
 echo "America/Sao_Paulo" > /etc/timezone
-echo 'ALFA INTERNET' > /usr/lib/sshplus
-ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime >/dev/null 2>&1
-dpkg-reconfigure --frontend noninteractive tzdata >/dev/null 2>&1
-[[ -z $lst1 ]] && {
-	rm -rf $_Ink/list >/dev/null 2>&1 && cat /dev/null >~/.bash_history && history -c && exit 0
-}
-[[ ! -d /etc/SSHPlus ]] && mkdir /etc/SSHPlus
-[[ ! -d /etc/SSHPlus/v2ray ]] && mkdir /etc/SSHPlus/v2ray
-[[ ! -d /etc/SSHPlus/senha ]] && mkdir /etc/SSHPlus/senha
-[[ ! -e /etc/SSHPlus/Exp ]] && touch /etc/SSHPlus/Exp
-[[ ! -d /etc/SSHPlus/userteste ]] && mkdir /etc/SSHPlus/userteste
-[[ ! -d /etc/SSHPlus/.tmp ]] && mkdir /etc/SSHPlus/.tmp
-[[ ! -d /etc/bot ]] && mkdir /etc/bot
-[[ ! -d /etc/bot/info-users ]] && mkdir /etc/bot/info-users
-[[ ! -d /etc/bot/arquivos ]] && mkdir /etc/bot/arquivos
-[[ ! -d /etc/bot/revenda ]] && mkdir /etc/bot/revenda
-[[ ! -d /etc/bot/suspensos ]] && mkdir /etc/bot/suspensos
-[[ ! -e /etc/bot/lista_ativos ]] && touch /etc/bot/lista_ativos
-[[ ! -e /etc/bot/lista_suspensos ]] && touch /etc/bot/lista_suspensos
-if ps x | grep "bot_plus"|grep -v grep 1>/dev/null 2>/dev/null; then
-	pidbot_plus=$(ps x|grep "bot_plus"|awk -F "pts" {'print $1'})
-    kill -9 $pidbot_plus > /dev/null 2>&1
-    screen -wipe > /dev/null 2>&1
-fi
-wget -O /etc/ssh/sshd_config https://github.com/alfalemos/SSHPLUS/raw/main/sshd_config
-service ssh restart
-wget https://github.com/alfalemos/sshplus3/raw/main/addhost -O /bin/addhost > /dev/null 2>&1
-chmod +x /bin/addhost
-wget https://github.com/alfalemos/sshplus3/raw/main/verifatt -O /bin/verifatt > /dev/null 2>&1
-chmod +x /bin/verifatt
-wget https://github.com/alfalemos/sshplus3/raw/main/verifbot -O /bin/verifbot > /dev/null 2>&1
-chmod +x /bin/verifbot
-wget https://github.com/alfalemos/sshplus3/raw/main/alterarsenha -O /bin/alterarsenha > /dev/null 2>&1
-chmod +x /bin/alterarsenha
-wget https://github.com/alfalemos/sshplus3/raw/main/criarusuario -O /bin/criarusuario > /dev/null 2>&1
-chmod +x /bin/criarusuario
-wget https://github.com/alfalemos/sshplus3/raw/main/delhost -O /bin/delhost > /dev/null 2>&1
-chmod +x /bin/delhost
-wget https://github.com/alfalemos/sshplus3/raw/main/expcleaner -O /bin/expcleaner > /dev/null 2>&1
-chmod +x /bin/expcleaner
-wget https://github.com/alfalemos/sshplus3/raw/main/mudardata -O /bin/mudardata > /dev/null 2>&1
-chmod +x /bin/mudardata
-wget https://github.com/alfalemos/sshplus3/raw/main/criarteste -O /bin/criarteste > /dev/null 2>&1
-chmod +x /bin/criarteste
-wget https://github.com/alfalemos/sshplus3/raw/main/remover -O /bin/remover > /dev/null 2>&1
-chmod +x /bin/remover
-wget https://github.com/alfalemos/sshplus3/raw/main/alterarlimite -O /bin/alterarlimite > /dev/null 2>&1
-chmod +x /bin/
-wget https://github.com/alfalemos/sshplus3/raw/main/ajuda -O /bin/ajuda > /dev/null 2>&1
-chmod +x /bin/ajuda
-wget https://github.com/alfalemos/sshplus3/raw/main/sshmonitor -O /bin/sshmonitor > /dev/null 2>&1
-chmod +x /bin/sshmonitor
-wget https://github.com/alfalemos/sshplus3/raw/main/badvpn -O /bin/badvpn > /dev/null 2>&1
-chmod +x /bin/badvpn
-wget https://github.com/alfalemos/sshplus3/raw/main/userbackup -O /bin/userbackup > /dev/null 2>&1
-chmod +x /bin/userbackup
-wget https://github.com/alfalemos/sshplus3/raw/main/blockt -O /bin/blockt > /dev/null 2>&1
-chmod +x /bin/blockt
-wget https://github.com/alfalemos/sshplus3/raw/main/otimizar -O /bin/otimizar > /dev/null 2>&1
-chmod +x /bin/otimizar
-wget https://github.com/alfalemos/SSHPLUS/raw/main/menu -O /bin/menu > /dev/null 2>&1
-chmod +x /bin/menu
-wget https://github.com/alfalemos/sshplus3/raw/main/speedtest -O /bin/speedtest > /dev/null 2>&1
-chmod +x /bin/speedtest
-wget https://github.com/alfalemos/sshplus3/raw/main/banner -O /bin/banner > /dev/null 2>&1
-chmod +x /bin/banner
-wget https://github.com/alfalemos/SSHPLUS/raw/main/senharoot.sh -O /bin/senharoot > /dev/null 2>&1
-chmod +x /bin/senharoot
-wget https://github.com/alfalemos/sshplus3/raw/main/reiniciarservicos -O /bin/reiniciarservicos > /dev/null 2>&1
-chmod +x /bin/reiniciarservicos
-wget https://github.com/alfalemos/sshplus3/raw/main/reiniciarsistema -O /bin/reiniciarsistema > /dev/null 2>&1
-chmod +x /bin/reiniciarsistema
-wget https://github.com/alfalemos/sshplus3/raw/main/attscript -O /bin/attscript > /dev/null 2>&1
-chmod +x /bin/attscript
-wget https://github.com/alfalemos/sshplus3/raw/main/conexao -O /bin/conexao > /dev/null 2>&1
-chmod +x /bin/conexao
-wget https://github.com/alfalemos/sshplus3/raw/main/detalhes -O /bin/detalhes > /dev/null 2>&1
-chmod +x /bin/detalhes
-wget https://github.com/alfalemos/sshplus3/raw/main/delscript -O /bin/delscript > /dev/null 2>&1
-chmod +x /bin/delscript
-wget https://github.com/alfalemos/sshplus3/raw/main/botssh -O /bin/botssh > /dev/null 2>&1
-chmod +x /bin/botssh
-wget https://github.com/alfalemos/sshplus3/raw/main/infousers -O /bin/infousers > /dev/null 2>&1
-chmod +x /bin/infousers
-wget https://github.com/alfalemos/sshplus3/raw/main/limiter -O /bin/limiter > /dev/null 2>&1
-chmod +x /bin/limiter
-wget https://github.com/alfalemos/sshplus3/raw/main/uexpired -O /bin/uexpired > /dev/null 2>&1
-chmod +x /bin/uexpired
-wget https://github.com/alfalemos/sshplus3/raw/main/cabecalho -O /etc/SSHPlus/cabecalho > /dev/null 2>&1
-chmod +x /etc/SSHPlus/cabecalho
-wget https://github.com/alfalemos/sshplus3/raw/main/bot -O /etc/SSHPlus/bot > /dev/null 2>&1
-chmod +x /etc/SSHPlus/bot
-wget https://github.com/alfalemos/sshplus3/raw/main/proxy.py -O /etc/SSHPlus/proxy.py > /dev/null 2>&1
-chmod +x /etc/SSHPlus/proxy.py
-wget https://github.com/alfalemos/sshplus3/raw/main/droplimiter > /dev/null 2>&1
-chmod +x /etc/SSHPlus/droplimiter
-wget https://github.com/alfalemos/sshplus3/raw/main/instsqd > /dev/null 2>&1
-chmod +x /etc/SSHPlus/instsqd
-wget https://github.com/alfalemos/sshplus3/raw/main/open.py > /dev/null 2>&1
-chmod +x /etc/SSHPlus/open.py
-wget https://github.com/alfalemos/sshplus3/raw/main/slow_dns > /dev/null 2>&1
-chmod +x /etc/SSHPlus/slow_dns
-wget https://github.com/alfalemos/sshplus3/raw/main/wsproxy.py > /dev/null 2>&1
-chmod +x /etc/SSHPlus/wsproxy.py
-wget https://github.com/alfalemos/sshplus3/raw/main/trojan-go > /dev/null 2>&1
-chmod +x /etc/SSHPlus/trojan-go
-wget https://github.com/alfalemos/sshplus3/raw/main/onlineapp > /dev/null 2>&1
-chmod +x /etc/SSHPlus/onlineapp
-wget https://github.com/alfalemos/sshplus3/raw/main/swapmemory > /dev/null 2>&1
-chmod +x /etc/SSHPlus/swapmemory
-wget https://github.com/alfalemos/sshplus3/raw/main/v2ray > /dev/null 2>&1
-chmod +x /etc/SSHPlus/v2ray
-wget https://github.com/alfalemos/Sistema/raw/main/sshplus -O /usr/lib/sshplus > /dev/null 2>&1
-chmod +x /usr/lib/sshplus
-wget https://github.com/alfalemos/SSHPLUS/raw/main/jq-linux64 > /dev/null 2>&1
-chmod +x jq-linux64
-sudo mv jq-linux64 $(which jq)
-
-
-[[ ! -d /etc/bot ]] && mkdir /etc/bot
-[[ ! -d /etc/bot/info-users ]] && mkdir /etc/bot/info-users
-[[ ! -d /etc/bot/arquivos ]] && mkdir /etc/bot/arquivos
-[[ ! -d /etc/bot/revenda ]] && mkdir /etc/bot/revenda
-[[ ! -d /etc/bot/suspensos ]] && mkdir /etc/bot/suspensos
-_dir1='/bin'
-_dir2='/etc/SSHPlus'
-_mdls=("addhost" "delhost" "alterarsenha" "criarusuario" "expcleaner" "mudardata" "remover" "criarteste" "verifbot" "droplimiter" "alterarlimite" "ajuda" "sshmonitor" "badvpn" "userbackup" "instsqd" "blockt" "otimizar" "menu" "speedtest" "banner" "senharoot" "reiniciarservicos" "reiniciarsistema" "attscript" "conexao" "delscript" "detalhes" "botssh" "infousers" "verifatt" "limiter" "uexpired" "cabecalho" "bot" "open.py" "slow_dns" "proxy.py" "wsproxy.py" "trojan-go" "onlineapp" "swapmemory")
-
-_arq_host="/etc/hosts"
-_host[0]="d1n212ccp6ldpw.cloudfront.net"
-_host[1]="dns.whatsapp.net"
-_host[2]="portalrecarga.vivo.com.br/recarga"
-_host[3]="navegue.vivo.com.br/controle/"
-_host[4]="navegue.vivo.com.br/pre/"
-_host[5]="www.whatsapp.net"
-_host[6]="/SSHPLUS?"
-for host in ${_host[@]}; do
-	if [[ "$(grep -w "$host" $_arq_host | wc -l)" = "0" ]]; then
-		sed -i "3i\127.0.0.1 $host" $_arq_host
-	fi
-done
-
-service ssh restart
-[[ ! -e /etc/autostart ]] && {
-echo '#!/bin/bash
+ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime > /dev/null 2>&1
+dpkg-reconfigure --frontend noninteractive tzdata > /dev/null 2>&1
+wget https://github.com/alfalemos/SSHPLUS/raw/main/list > /dev/null 2>&1
+wget https://github.com/alfalemos/SSHPLUS/raw/main/versao -O /bin/versao > /dev/null 2>&1
+wget https://raw.githubusercontent.com/twossh/SSHPLUS/master/Modulos/licence -O /usr/lib/licence > /dev/null 2>&1
 clear
-#INICIO AUTOMATICO' > /etc/autostart
-chmod +x /etc/autostart
+[[ "$EUID" -ne 0 ]] && echo -e "\033[1;33mDesculpe, \033[1;33mvocê precisa executar como root\033[0m" && rm -rf $HOME/Plus > /dev/null 2>&1 && return 1
+cd $HOME
+fun_bar () {
+comando[0]="$1"
+comando[1]="$2"
+ (
+[[ -e $HOME/fim ]] && rm $HOME/fim
+${comando[0]} -y > /dev/null 2>&1
+${comando[1]} -y > /dev/null 2>&1
+touch $HOME/fim
+ ) > /dev/null 2>&1 &
+ tput civis
+echo -ne "  \033[1;33mAGUARDE \033[1;37m- \033[1;33m["
+while true; do
+   for((i=0; i<18; i++)); do
+   echo -ne "\033[1;31m#"
+   sleep 0.1s
+   done
+   [[ -e $HOME/fim ]] && rm $HOME/fim && break
+   echo -e "\033[1;33m]"
+   sleep 1s
+   tput cuu1
+   tput dl1
+   echo -ne "  \033[1;33mAGUARDE \033[1;37m- \033[1;33m["
+done
+echo -e "\033[1;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
+tput cnorm
 }
-#INICIO
-[[ $(crontab -l|grep -c "uexpired") = '0' ]] && (crontab -l 2>/dev/null; echo "0 */6 * * * /bin/uexpired") | crontab -
-[[ $(crontab -l|grep -c "verifatt") = '0' ]] && (crontab -l 2>/dev/null; echo "@daily /bin/verifatt") | crontab -
-[[ $(crontab -l|grep -c "autostart") = '0' ]] && (crontab -l 2>/dev/null; echo -e "@reboot /etc/autostart\n* * * * * /etc/autostart") | crontab -
-wget -qO- https://github.com/alfalemos/SSHPLUS/raw/main/versao |sed -n '1 p' |cut -d' ' -f2 > /bin/versao && cat /bin/versao > /home/sshplus
-service ssh restart > /dev/null 2>&1
-[[ $(ps x | grep "bot_plus"|grep -v grep | wc -l) != '0' ]] && {
-[[ ! -e "/etc/SSHPlus/ShellBot.sh" ]] && wget -qO- https://github.com/alfalemos/sshplus3/raw/main/ShellBot.sh > /etc/SSHPlus/ShellBot.sh
-screen -r -S "bot_plus" -X quit
-screen -r -S "udpvpn" -X quit
-screen -wipe 1>/dev/null 2>/dev/null
-/etc/autostart
+echo -e "\033[1;31m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓                 ┃                  SCRIPT OFICIAL                  ┃                 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛                                                                                         ▒█▀▀▀█ ▒█▀▀▀█ ▒█░▒█ ▒█▀▀█ ▒█░░░ ▒█░▒█ ▒█▀▀▀█                         ░▀▀▀▄▄ ░▀▀▀▄▄ ▒█▀▀█ ▒█▄▄█ ▒█░░░ ▒█░▒█ ░▀▀▀▄▄                         ▒█▄▄▄█ ▒█▄▄▄█ ▒█░▒█ ▒█░░░ ▒█▄▄█ ░▀▄▄▀ ▒█▄▄▄█                                                                                              ============ Noob: @ALFAINTERNET ===========\033[0m"
+echo ""
+echo -ne "\033[1;36mAGUARDE... \033[1;32m OK !\033[1;37m "
+chmod +x list && ./list > /dev/null 2>&1
+echo ""
+IP=$(wget -qO- ipv4.icanhazip.com)
+IP2=$(wget -qO- http://whatismyip.akamai.com/)
+[[ "$IP" != "$IP2" ]] && ipdovps="$IP2" || ipdovps="$IP"
+[[ -f "$HOME/usuarios.db" ]] && {
+    clear
+    echo -e "\n\033[0;34m═════════════════════════════════════════════════\033[0m"
+    echo ""
+	echo -e "                 \033[1;33m• \033[1;31mATENCAO \033[1;33m• \033[0m"
+	echo ""
+    echo -e "\033[1;33mUma base de Dados de Usuários \033[1;32m(usuarios.db) \033[1;33mFoi" 
+    echo -e "Encontrada! Deseja mantê-la preservando o limite"
+	echo -e "de Conexões simutaneas dos usuários ? Ou Deseja"
+    echo -e "criar uma nova base de dados ?\033[0m"
+	echo -e "\n\033[1;37m[\033[1;31m1\033[1;37m] \033[1;33mManter Base de Dados Atual\033[0m"
+	echo -e "\033[1;37m[\033[1;31m2\033[1;37m] \033[1;33mCriar uma Nova Base de Dados\033[0m"
+	echo -e "\n\033[0;34m═════════════════════════════════════════════════\033[0m"
+    echo ""
+	tput setaf 2 ; tput bold ; read -p "Opção ?: " -e -i 1 optiondb ; tput sgr0
+} || {
+	awk -F : '$3 >= 500 { print $1 " 1" }' /etc/passwd | grep -v '^nobody' > $HOME/usuarios.db
 }
-[[ -d /var/www/html/openvpn ]] && service apache2 restart > /dev/null 2>&1
+[[ "$optiondb" = '2' ]] && awk -F : '$3 >= 500 { print $1 " 1" }' /etc/passwd | grep -v '^nobody' > $HOME/usuarios.db
+clear
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-18s\n' " AGUARDE A INSTALAÇÃO" ; tput sgr0
+echo ""
+echo ""
+echo -e "          \033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mATUALIZANDO SISTEMA \033[1;33m[\033[1;31m!\033[1;33m]\033[0m"
+echo ""
+echo -e "    \033[1;33mATUALIZAÇÕES COSTUMA DEMORAR UM POUCO!\033[0m"
+echo ""
+fun_attlist () {
+    apt-get update -y
+    if service apache2 status; then
+    sed -i "s/Listen 80/Listen 81/g" /etc/apache2/ports.conf
+    service apache2 restart
+    /etc/init.d/apache2 restart
+    fi
+}
+fun_bar 'fun_attlist'
+clear
+echo ""
+echo -e "          \033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mINSTALANDO PACOTES \033[1;33m[\033[1;31m!\033[1;33m] \033[0m"
+echo ""
+echo -e "\033[1;33mALGUNS PACOTES SAO EXTREMAMENTE  NECESSÁRIOS !\033[0m"
+echo ""
+inst_pct () {
+_pacotes=("bc" "screen" "nano" "unzip" "lsof" "netstat" "dos2unix" "nload" "htop" "jq" "curl" "figlet" "python" "python3" "python-pip")
+for _prog in ${_pacotes[@]}; do
+    apt install $_prog -y
+done
+pip install speedtest-cli
+}
+fun_bar 'inst_pct'
+[[ -f "/usr/sbin/ufw" ]] && ufw allow 443/tcp ; ufw allow 80/tcp ; ufw allow 3128/tcp ; ufw allow 8799/tcp ; ufw allow 8080/tcp
+clear
+echo ""
+echo -e "              \033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mFINALIZANDO \033[1;33m[\033[1;31m!\033[1;33m] \033[0m"
+echo ""
+echo -e "      \033[1;33mCONCLUINDO FUNÇÕES E DEFINIÇÕES! \033[0m"
+echo ""
+cd $_lsk
+fun_bar 'source list'
+rm Plus* > /dev/null 2>&1
+rm list* > /dev/null 2>&1
+sleep 2
+clear
+echo ""
+cd $HOME
+echo -e "        \033[1;33m • \033[1;32mINSTALACAO CONCLUIDA\033[1;33m • \033[0m"
+echo ""
+echo -e "\033[1;31m \033[1;33mCOMANDO PRINCIPAL: \033[1;32mmenu\033[0m"
+echo "$ipdovps" >/etc/IP
