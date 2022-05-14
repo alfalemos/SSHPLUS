@@ -2,7 +2,7 @@
 #====================================================
 #	@ALFAINTERNET
 #====================================================
-_lvk=$(wget -qO- https://github.com/alfalemos/SSHPLUS/raw/main/versao)
+_lvk=$(wget -qO- https://raw.githubusercontent.com/alfalemos/SSHPLUS/main/versao)
 IP=$(wget -qO- ipv4.icanhazip.com)
 IP2=$(wget -qO- http://whatismyip.akamai.com/)
 [[ "$IP" != "$IP2" ]] && ipdovps="$IP2" || ipdovps="$IP"
